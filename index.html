@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Muneeb | Data Analyst & Data Scientist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Analytics 4: visitor, region, city, browser and device analytics -->
+  <!-- SETUP: Replace G-XXXXXXXXXX below with your Google Analytics 4 Measurement ID. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+  window.addEventListener("load", function () {
+    fetch("/api/visitor-log", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        page: window.location.pathname
+      }),
+      keepalive: true
+    }).catch(() => {});
+  });
+</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+      anonymize_ip: true,
+      send_page_view: true
+    });
+  </script>
+  <style>
+    .glass { 
+      background: rgba(10, 15, 30, 0.85); 
+      backdrop-filter: blur(16px); 
+    }
+    
+    .gradient-text { 
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%); 
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent; 
+    }
+
+    /* Professional Data Grid Background Overlay */
+    .data-bg-pattern {
+      background-color: #030712;
+      background-image: 
+        radial-gradient(rgba(56, 189, 248, 0.12) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 24px 24px, 48px 48px, 48px 48px;
+      background-position: 0 0, 0 0, 0 0;
+    }
+
+    /* Subtle Data Glow Accent */
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+    }
+  </style>
+</head>
+<body class="data-bg-pattern text-slate-100 font-sans antialiased selection:bg-cyan-500 selection:text-slate-950 relative overflow-x-hidden">
+
+  <!-- Ambient Background Glows -->
+  <div class="glow-orb w-96 h-96 bg-cyan-600/15 top-10 left-1/4"></div>
+  <div class="glow-orb w-[500px] h-[500px] bg-indigo-600/10 top-[1000px] right-10"></div>
+  <div class="glow-orb w-[400px] h-[400px] bg-blue-600/15 top-[2200px] left-10"></div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass border-b border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center relative z-10">
+      <a href="#" class="text-lg sm:text-xl font-bold tracking-wider text-cyan-400 flex items-center gap-2">
+        <i data-lucide="bar-chart-2" class="w-5 h-5 text-cyan-400"></i>
+        <span>MUHAMMAD MUNEEB</span>
+      </a>
+      
+      <!-- Desktop Navigation Links -->
+      <div class="hidden lg:flex space-x-6 xl:space-x-8 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-cyan-400 transition">About</a>
+        <a href="#experience" class="hover:text-cyan-400 transition">Experience</a>
+        <a href="#projects" class="hover:text-cyan-400 transition">Projects</a>
+        <a href="#skills" class="hover:text-cyan-400 transition">Skills</a>
+        <a href="#testimonials" class="hover:text-cyan-400 transition">Recommendations</a>
+        <a href="#education" class="hover:text-cyan-400 transition">Education</a>
+        <a href="#contact" class="hover:text-cyan-400 transition">Contact</a>
+      </div>
+
+      <div class="hidden lg:block">
+        <a href="https://www.linkedin.com/in/muhammad-muneeb-468310105" target="_blank" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold px-4 py-2 rounded-lg text-xs sm:text-sm transition shadow-lg shadow-cyan-500/20">
+          LinkedIn (24K+ Followers)
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="lg:hidden text-slate-300 hover:text-white focus:outline-none p-2">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-slate-900/95 border-b border-slate-800 px-6 pt-2 pb-6 space-y-3">
+      <a href="#about" class="block py-1 hover:text-cyan-400 transition text-sm">About</a>
+      <a href="#experience" class="block py-1 hover:text-cyan-400 transition text-sm">Experience</a>
+      <a href="#projects" class="block py-1 hover:text-cyan-400 transition text-sm">Projects</a>
+      <a href="#skills" class="block py-1 hover:text-cyan-400 transition text-sm">Skills</a>
+      <a href="#testimonials" class="block py-1 hover:text-cyan-400 transition text-sm">Recommendations</a>
+      <a href="#education" class="block py-1 hover:text-cyan-400 transition text-sm">Education</a>
+      <a href="#contact" class="block py-1 hover:text-cyan-400 transition text-sm">Contact</a>
+      <a href="https://www.linkedin.com/in/muhammad-muneeb-468310105" target="_blank" class="inline-block mt-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-4 py-2 rounded-lg text-xs">
+        LinkedIn (24K+ Followers)
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-28 sm:pt-36 pb-16 sm:pb-20 px-4 sm:px-6 max-w-7xl mx-auto z-10">
+    <div class="inline-flex items-center space-x-2 bg-cyan-950/80 border border-cyan-800/80 text-cyan-300 px-3 py-1 rounded-full text-xs font-semibold mb-6 shadow-sm shadow-cyan-500/10">
+      <i data-lucide="award" class="w-4 h-4 flex-shrink-0 text-cyan-400"></i>
+      <span>Data Analyst & Business Intelligence Specialist (5+ Years Experience)</span>
+    </div>
+    <h1 class="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+      Transforming Complex Data Into <span class="gradient-text">Actionable Executive Insights</span>
+    </h1>
+    <p class="text-slate-400 text-base sm:text-lg md:text-xl max-w-3xl mb-8 leading-relaxed">
+      Hello, I am <strong class="text-slate-200">Muhammad Muneeb</strong>, a Data Analyst with 5+ years of experience in Data Analytics and BI field based in Pakistan, with a professional network of 24,000+ on LinkedIn.
+      <br><br>
+      I specialize in bridging the gap between raw data and strategic decision-making. Currently at Pakistan Intermodal Limited, I integrate Odoo ERP with Power BI to build automated, real-time executive dashboards. My core expertise includes SQL, Excel, data visualization, and process optimization—helping organizations eliminate manual reporting, uncover operational efficiencies, and achieve measurable cost savings.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a href="#projects" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold px-6 py-3 rounded-lg text-sm flex items-center justify-center gap-2 transition shadow-lg shadow-cyan-500/20">
+        Explore Portfolio Projects <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+      <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science" target="_blank" class="border border-slate-700 hover:border-slate-500 bg-slate-900/60 text-slate-300 font-semibold px-6 py-3 rounded-lg text-sm flex items-center justify-center gap-2 transition backdrop-blur-md">
+        <i data-lucide="github" class="w-4 h-4"></i> GitHub Repository
+      </a>
+    </div>
+  </section>
+
+  <!-- Live Verified Stats -->
+  <section class="relative z-10 py-12 border-y border-slate-800/80 bg-slate-900/40 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 text-center">
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-cyan-500/30 transition">
+        <div class="text-2xl sm:text-4xl font-extrabold text-cyan-400">24,000+</div>
+        <div class="text-slate-400 text-xs sm:text-sm mt-1">LinkedIn Network</div>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-cyan-500/30 transition">
+        <div class="text-2xl sm:text-4xl font-extrabold text-cyan-400">500+</div>
+        <div class="text-slate-400 text-xs sm:text-sm mt-1">Industry Connections</div>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-cyan-500/30 transition">
+        <div class="text-2xl sm:text-4xl font-extrabold text-cyan-400">5+ Years</div>
+        <div class="text-slate-400 text-xs sm:text-sm mt-1">Data Analytics & BI Experience</div>
+      </div>
+      <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-cyan-500/30 transition">
+        <div class="text-2xl sm:text-4xl font-extrabold text-cyan-400">End-to-End</div>
+        <div class="text-slate-400 text-xs sm:text-sm mt-1">Analytics Solutions</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Experience Section -->
+  <section id="about" class="relative z-10 py-16 sm:py-20 px-4 sm:px-6 max-w-7xl mx-auto">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-4 flex items-center gap-2">
+          <i data-lucide="pie-chart" class="w-7 h-7 text-cyan-400"></i> Executive Overview
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+          As a Data Analyst and BI Specialist with over 5 years of hands-on experience, I connect core business goals with predictive machine learning, database management, and interactive dashboards. I bridge the gap between technical data and high-level strategy to help leadership make faster, smarter decisions. By automating manual reporting pipelines and turning raw data into clear visual insights, I help organizations improve operational efficiency and achieve measurable business growth.
+        </p>
+        <div class="space-y-4">
+          <div class="flex gap-4 p-4 rounded-xl bg-slate-900/80 border border-slate-800 backdrop-blur-md">
+            <i data-lucide="line-chart" class="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1"></i>
+            <div>
+              <h4 class="font-bold text-slate-200">Business Impact & Analytics</h4>
+              <p class="text-xs sm:text-sm text-slate-400">Converting raw business metrics into simple visual reports that drive real results.</p>
+            </div>
+          </div>
+          <div class="flex gap-4 p-4 rounded-xl bg-slate-900/80 border border-slate-800 backdrop-blur-md">
+            <i data-lucide="database" class="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1"></i>
+            <div>
+              <h4 class="font-bold text-slate-200">Data Pipelines</h4>
+              <p class="text-xs sm:text-sm text-slate-400">Automating ETL data processing using Python, SQL, and statistical modeling libraries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experience Section -->
+      <div id="experience">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-6 flex items-center gap-2">
+          <i data-lucide="briefcase" class="w-7 h-7 text-cyan-400"></i> Professional Experience (5+ Years)
+        </h2>
+        <div class="space-y-6 border-l-2 border-slate-800 pl-4 sm:pl-6 ml-2 sm:ml-0">
+          <div class="relative">
+            <span class="absolute -left-[23px] sm:-left-[31px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-slate-950 shadow-md shadow-cyan-500/50"></span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-100">Senior Data & BI Developer</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-1">Pakistan Intermodal Limited</p>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              Karachi, Pakistan | Jul 2023 - Aug 2026
+            </p>
+          </div>
+          <div class="relative">
+            <span class="absolute -left-[23px] sm:-left-[31px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-slate-950 shadow-md shadow-cyan-500/50"></span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-100">Business Intelligence Developer</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-1">OpenPort</p>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              Karachi, Pakistan | Aug 2022 - Jul 2023
+            </p>
+          </div>
+          <div class="relative">
+            <span class="absolute -left-[23px] sm:-left-[31px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-slate-950 shadow-md shadow-cyan-500/50"></span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-100">Data Management Coordinator</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-1">Smart Skill UAE</p>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              Remote | Jan 2021 - Jul 2022
+            </p>
+          </div>
+          <div class="relative">
+            <span class="absolute -left-[23px] sm:-left-[31px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-slate-950 shadow-md shadow-cyan-500/50"></span>
+            <h3 class="text-lg sm:text-xl font-bold text-slate-100">Data Management & QA</h3>
+            <p class="text-xs sm:text-sm text-slate-400 mb-1">Doozie Labs</p>
+            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              Karachi, Pakistan | Oct 2019 - Dec 2020
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Projects Section -->
+  <section id="projects" class="relative z-10 py-16 sm:py-20 bg-slate-900/40 border-t border-slate-800/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">SELECTED BI DELIVERABLES/PROJECTS</h2>
+          <p class="text-slate-400 mt-2 text-sm sm:text-base max-w-2xl">Project source files directly hosted under Muneeb-Mujahid/Data-Analysis-And-Science.</p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+              <!-- Project Card 0a -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/ce5670cf1f84fdced98b09fda0207ffdcb200d72/Restaurant_page-0001.jpg" 
+                   alt="Accounting Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Resturant Dashboard</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+This Restaurant Performance Dashboard reports total sales of 12.78M, with 95.68% YoY growth and a 6.45% WoW increase. London leads revenue with 4.22M (33.03%), while Creamy Mushroom Curry is the top-selling item at 810,755.28. Weekend sales outperform weekdays, highlighting an opportunity for mid-week promotions. Key recommendations include improving underperforming locations and promoting best-selling menu items to increase revenue.             </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Excel</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Dax</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/ce5670cf1f84fdced98b09fda0207ffdcb200d72/Restaurant_page-0001.jpg" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+              <!-- Project Card 0b -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/ce5670cf1f84fdced98b09fda0207ffdcb200d72/Bykea_Dashboard_page-0001.jpg" 
+                   alt="Accounting Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Riding App Dashboard</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+    This Power BI Ride & Marketplace Performance Dashboard analyzes transactions, revenue, customers, and driver performance. It tracks 50,000 completed rides with a total transaction value of approximately 4.99M. The dashboard highlights key KPIs, monthly trends, regional performance, and top customers, drivers, and vendors. It helps identify user behavior, performance trends, and opportunities to improve marketplace efficiency.         </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+              <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Google Sheet</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Dax</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/ce5670cf1f84fdced98b09fda0207ffdcb200d72/Bykea_Dashboard_page-0001.jpg" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Project Card 1 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Accounting%20Dashboard.png" 
+                   alt="Accounting Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Accounting Dashboard For PIL</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                A comprehensive financial dashboard designed to transform raw accounting data into clear executive insights. It tracks revenue, expenses, and profit margins in real time, helping leadership identify cost-saving opportunities and maintain tight budget control.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Python</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">ODOO CRM</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Accounting%20Dashboard.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Booking%20Report.png" 
+                   alt="Booking Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Booking Dashboard For PIL</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                Automated booking dashboard delivering real-time performance KPIs and status distributions. Converts complex transactional data into clear, actionable visual insights for management decision-making.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Python</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">ODOO CRM</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Booking%20Report.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 3 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Cold%20Chain%20UNILEVER.png" 
+                   alt="Cold Chain Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Cold Chain Dashboard (Unilever)</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                An interactive business intelligence report for Unilever's cold chain logistics that tracks key temperature and distribution KPIs across supply routes to ensure compliance.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">SQL Server</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">DAX</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Cold%20Chain%20UNILEVER.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 4 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Commercial%20Performance%20Dashboard.png" 
+                   alt="Commercial Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Commercial Dashboard For PIL</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                An interactive Power BI dashboard designed to monitor high-level commercial performance, revenue trends, and operational KPIs in real time for C-suite decision-making.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Python</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">ODOO CRM</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Commercial%20Performance%20Dashboard.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 5 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Dalda%20Momentum.png" 
+                   alt="Dalda Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Dalda Momentum Dashboard</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                An executive analytics dashboard designed to monitor sales trends and operational momentum. It simplifies complex business data into clear visual insights for fast management review.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">SQL Server</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">DAX</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Dalda%20Momentum.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 6 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/EPCL.png" 
+                   alt="EPCL Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Engro Polymer Dashboard (EPCL)</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                An executive performance analytics dashboard tracking key operational KPIs, sales trends, and financial metrics in real time to streamline decision-making.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">SQL Server</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">DAX</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/EPCL.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 7 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Freight%20Calculator.png" 
+                   alt="Freight Calculator" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Freight Calculator For PIL</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                An automated Freight Calculator tool designed to streamline logistics cost estimations and operational pricing while reducing quotation errors.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Excel</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">MySQL</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Freight%20Calculator.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 8 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/HOR%20LH-SH.png" 
+                   alt="HOR Trucking Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">HOR Trucking Dashboard For PIL</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                An end-to-end transport analytics dashboard tracking First Mile, Last Mile, short-haul, and long-haul operations to optimize delivery times.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Python</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">ODOO CRM</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/HOR%20LH-SH.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 9 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Interloop%20Stoppage.png" 
+                   alt="Interloop Stoppage Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Interloop Stoppage Dashboard</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                A real-time operational dashboard built to analyze equipment stoppage data and performance KPIs to minimize downtime and reduce operational losses.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">SQL Server</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">DAX</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Interloop%20Stoppage.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 10 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Mondelez%20OP.png" 
+                   alt="Mondelez Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Mondelez Dashboard For Openport</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                A sales and operations dashboard built to visualize Mondelez order processing performance, translating complex transactional data into clear KPIs.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">SQL Server</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">DAX</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Mondelez%20OP.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 11 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Train%20Dashboard%20For%20Management%20SP.png" 
+                   alt="Train Management Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Train Management Dashboard For PIL</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                Comprehensive train and logistics analytics dashboard tracking sales performance, TEU throughput, train capacity allocation, and revenue metrics.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Python</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">ODOO CRM</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+            <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Train%20Dashboard%20For%20Management%20SP.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project Card 12 -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-xl overflow-hidden hover:border-cyan-500/50 transition duration-300 flex flex-col justify-between shadow-lg hover:shadow-cyan-500/10 backdrop-blur-md">
+          <div>
+            <div class="h-48 bg-slate-800 relative overflow-hidden">
+              <img src="https://raw.githubusercontent.com/Muneeb-Mujahid/Data-Analysis-And-Science/refs/heads/master/Unilever%20Safety.png" 
+                   alt="Unilever Safety Dashboard" class="w-full h-full object-cover">
+            </div>
+            <div class="p-5 sm:p-6">
+              <span class="text-xs font-semibold uppercase tracking-wider text-cyan-400">Business Intelligence</span>
+              <h3 class="text-lg sm:text-xl font-bold mt-2 mb-3">Unilever Safety Dashboard</h3>
+              <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                Unilever Safety Analytics Dashboard monitors vehicle stop times and route deviations to ensure fleet safety, optimize driver behavior, and reduce delays.
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">SQL Server</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">Power BI</span>
+                <span class="text-xs bg-slate-800/80 border border-slate-700/50 text-slate-300 px-2.5 py-1 rounded-md">DAX</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 sm:p-6 pt-0 border-t border-slate-800/50 mt-auto">
+             <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science/blob/master/Unilever%20Safety.png" target="_blank" class="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 text-sm font-semibold pt-4">
+              View Dashboard <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Skillset Matrix -->
+  <section id="skills" class="relative z-10 py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-8 sm:mb-12">Core Competencies</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="p-6 bg-slate-900/80 border border-slate-800/80 rounded-xl hover:border-cyan-500/40 transition backdrop-blur-md">
+        <i data-lucide="code" class="w-8 h-8 text-cyan-400 mb-4"></i>
+        <h3 class="text-lg font-bold mb-3">Languages & SQL</h3>
+        <ul class="text-sm text-slate-400 space-y-2">
+          <li>• Python (Pandas, NumPy, Matplotlib)</li>
+          <li>• SQL Database Querying</li>
+          <li>• Advanced Excel & VBA</li>
+        </ul>
+      </div>
+
+      <div class="p-6 bg-slate-900/80 border border-slate-800/80 rounded-xl hover:border-cyan-500/40 transition backdrop-blur-md">
+        <i data-lucide="bar-chart" class="w-8 h-8 text-cyan-400 mb-4"></i>
+        <h3 class="text-lg font-bold mb-3">Business Intelligence</h3>
+        <ul class="text-sm text-slate-400 space-y-2">
+          <li>• Power BI Interactive Dashboards</li>
+          <li>• Tableau Storytelling</li>
+          <li>• DAX & Data Modeling</li>
+        </ul>
+      </div>
+
+      <div class="p-6 bg-slate-900/80 border border-slate-800/80 rounded-xl hover:border-cyan-500/40 transition backdrop-blur-md">
+        <i data-lucide="brain-circuit" class="w-8 h-8 text-cyan-400 mb-4"></i>
+        <h3 class="text-lg font-bold mb-3">Data Science</h3>
+        <ul class="text-sm text-slate-400 space-y-2">
+          <li>• Machine Learning Algorithms</li>
+          <li>• Exploratory Data Analysis</li>
+          <li>• Feature Engineering</li>
+        </ul>
+      </div>
+
+      <div class="p-6 bg-slate-900/80 border border-slate-800/80 rounded-xl hover:border-cyan-500/40 transition backdrop-blur-md">
+        <i data-lucide="briefcase" class="w-8 h-8 text-cyan-400 mb-4"></i>
+        <h3 class="text-lg font-bold mb-3">Executive Alignment</h3>
+        <ul class="text-sm text-slate-400 space-y-2">
+          <li>• C-Level Communication</li>
+          <li>• KPI Metric Tracking</li>
+          <li>• Strategic Planning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- LinkedIn Endorsements & Recommendations -->
+  <section id="testimonials" class="relative z-10 py-16 sm:py-20 bg-slate-900/40 border-t border-slate-800/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-2">LinkedIn Recommendations & Endorsements</h2>
+      <p class="text-slate-400 mb-12 text-sm sm:text-base">Endorsements from recruiters, team leads, and managers via LinkedIn.</p>
+
+      <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+        <div class="p-6 sm:p-8 bg-slate-900/80 border border-slate-800/80 rounded-xl relative flex flex-col justify-between backdrop-blur-md">
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">
+            "I enjoyed working closely with Muhammad Muneeb at OpenPort, where he demonstrated exceptional skills as a Power BI specialist. His ability to transform complex data into actionable insights has been invaluable to our projects. Muneeb consistently delivers high-quality reports and dashboards that help drive informed decision-making."
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-cyan-900/50 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-300 flex-shrink-0">
+              AR
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-200 text-sm sm:text-base">Asra Rauf</h4>
+              <p class="text-xs text-slate-500">Sales Planning & Operations Executive @ TMC | xOpenPort</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8 bg-slate-900/80 border border-slate-800/80 rounded-xl relative flex flex-col justify-between backdrop-blur-md">
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">
+            "Muhammad Muneeb is hardworking individual, who do his work diligently and efficiently. While working in Openport he did worked on multiple visualization dashboards and the clients have appreciated his work."
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-cyan-900/50 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-300 flex-shrink-0">
+             NK
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-200 text-sm sm:text-base">Noman Kadir</h4>
+              <p class="text-xs text-slate-500">GM Business Development & Operation @ OpenPort</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8 bg-slate-900/80 border border-slate-800/80 rounded-xl relative flex flex-col justify-between backdrop-blur-md">
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">
+            "He is very good with MySQL, SQL, and Power Bi, He is punctual and completes his work on time. Highly recommended"
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-cyan-900/50 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-300 flex-shrink-0">
+             AK
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-200 text-sm sm:text-base">Abdul Rehman Khan</h4>
+              <p class="text-xs text-slate-500">Technical Lead @ OpenPort</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8 bg-slate-900/80 border border-slate-800/80 rounded-xl relative flex flex-col justify-between backdrop-blur-md">
+          <p class="text-slate-300 text-sm leading-relaxed mb-6 italic">
+            "Muneeb is very talented and brilliant. He helped me in different technical projects, he possess strong problem solving skills and having ability to multitask. I feel great to work with him as because it's a chance for me to learn things by a person who's superb in their field of Business Intelligence."
+          </p>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-cyan-900/50 border border-cyan-500/30 flex items-center justify-center font-bold text-cyan-300 flex-shrink-0">
+              RS
+            </div>
+            <div>
+              <h4 class="font-bold text-slate-200 text-sm sm:text-base">Riffat Shehzadi</h4>
+              <p class="text-xs text-slate-500">AM Business Analytics at Bank Alfalah</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Certification Section -->
+  <section id="education" class="relative z-10 py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6">
+    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-8">Education & Certificates</h2>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Formal Education -->
+      <div>
+        <h3 class="text-lg font-semibold text-cyan-400 mb-4 flex items-center gap-2">
+          <i data-lucide="graduation-cap" class="w-5 h-5"></i> Academic Education
+        </h3>
+        <div class="space-y-4">
+          <div class="p-5 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-start gap-4 backdrop-blur-md">
+            <i data-lucide="award" class="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1"></i>
+            <div>
+              <h4 class="font-bold text-slate-100 text-sm sm:text-base">Bachelor's Degree in Computer Science (BSCS)</h4>
+              <p class="text-xs text-slate-400 mt-1">University of Karachi | 2015 - 2019</p>
+            </div>
+          </div>
+
+          <div class="p-5 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-start gap-4 backdrop-blur-md">
+            <i data-lucide="award" class="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1"></i>
+            <div>
+              <h4 class="font-bold text-slate-100 text-sm sm:text-base">Intermediate (Pre-Engineering)</h4>
+              <p class="text-xs text-slate-400 mt-1">Government Delhi College | 2012 - 2014</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Certifications -->
+      <div>
+        <h3 class="text-lg font-semibold text-cyan-400 mb-4 flex items-center gap-2">
+          <i data-lucide="award" class="w-5 h-5"></i> Certifications & Training
+        </h3>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="p-4 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-center gap-3 backdrop-blur-md">
+            <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400 flex-shrink-0"></i>
+            <div>
+              <h4 class="font-bold text-slate-100 text-xs sm:text-sm">Data Analytics & BI</h4>
+              <p class="text-[11px] text-slate-400">DigiSkills Pakistan</p>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-center gap-3 backdrop-blur-md">
+            <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400 flex-shrink-0"></i>
+            <div>
+              <h4 class="font-bold text-slate-100 text-xs sm:text-sm">SQL (Intermediate)</h4>
+              <p class="text-[11px] text-slate-400">HackerRank</p>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-center gap-3 backdrop-blur-md">
+            <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400 flex-shrink-0"></i>
+            <div>
+              <h4 class="font-bold text-slate-100 text-xs sm:text-sm">SQL for Data Analysis</h4>
+              <p class="text-[11px] text-slate-400">Udemy</p>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-center gap-3 backdrop-blur-md">
+            <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400 flex-shrink-0"></i>
+            <div>
+              <h4 class="font-bold text-slate-100 text-xs sm:text-sm">Data Science Course</h4>
+              <p class="text-[11px] text-slate-400">Jawan Pakistan</p>
+            </div>
+          </div>
+
+          <div class="p-4 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-center gap-3 sm:col-span-2 backdrop-blur-md">
+            <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400 flex-shrink-0"></i>
+            <div>
+              <h4 class="font-bold text-slate-100 text-xs sm:text-sm">Tableau Data Visualization Basics</h4>
+              <p class="text-[11px] text-slate-400">Simplilearn</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="relative z-10 py-16 sm:py-20 bg-slate-900/60 border-t border-slate-800/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight mb-3">Get In Touch</h2>
+        <p class="text-slate-400 text-sm sm:text-base">Feel free to reach out for Senior Data Analytics roles, consultancy, or technical collaborations.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Phone Numbers -->
+        <div class="p-6 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-center gap-4 hover:border-cyan-500/40 transition backdrop-blur-md">
+          <div class="w-12 h-12 rounded-lg bg-cyan-950/80 border border-cyan-800/80 flex items-center justify-center text-cyan-400 flex-shrink-0">
+            <i data-lucide="phone" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Mobile</h4>
+            <div class="text-slate-200 font-bold text-sm sm:text-base mt-0.5 space-y-0.5">
+              <a href="tel:03102923832" class="block hover:text-cyan-400 transition">0310 2923832</a>
+              <a href="tel:03493977846" class="block hover:text-cyan-400 transition">0349 3977846</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="p-6 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-center gap-4 hover:border-cyan-500/40 transition backdrop-blur-md">
+          <div class="w-12 h-12 rounded-lg bg-emerald-950/80 border border-emerald-800/80 flex items-center justify-center text-emerald-400 flex-shrink-0">
+            <i data-lucide="message-square" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h4 class="text-xs text-slate-400 font-semibold uppercase tracking-wider">WhatsApp</h4>
+            <a href="https://wa.me/923102923832" target="_blank" class="text-slate-200 font-bold text-sm sm:text-base mt-0.5 block hover:text-emerald-400 transition">
+              0310 2923832
+            </a>
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="p-6 bg-slate-900/80 border border-slate-800/80 rounded-xl flex items-center gap-4 hover:border-cyan-500/40 transition sm:col-span-2 lg:col-span-1 backdrop-blur-md">
+          <div class="w-12 h-12 rounded-lg bg-cyan-950/80 border border-cyan-800/80 flex items-center justify-center text-cyan-400 flex-shrink-0">
+            <i data-lucide="mail" class="w-6 h-6"></i>
+          </div>
+          <div class="overflow-hidden">
+            <h4 class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Email</h4>
+            <a href="mailto:muneebmujahid58@gmail.com" class="text-slate-200 font-bold text-sm sm:text-base mt-0.5 block truncate hover:text-cyan-400 transition">
+              muneebmujahid58@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="relative z-10 py-12 border-t border-slate-800/80 bg-slate-950 text-center px-4 sm:px-6">
+    <h2 class="text-xl sm:text-2xl font-bold mb-4">Connect for Senior Analytics & Data Roles</h2>
+    <div class="flex flex-wrap justify-center gap-4 mt-6">
+      <a href="https://www.linkedin.com/in/muhammad-muneeb-468310105" target="_blank" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-semibold px-6 py-3 rounded-lg text-sm flex items-center gap-2 transition shadow-md shadow-cyan-500/20">
+        <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn Profile
+      </a>
+      <a href="https://github.com/Muneeb-Mujahid/Data-Analysis-And-Science" target="_blank" class="bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-100 font-semibold px-6 py-3 rounded-lg text-sm flex items-center gap-2 transition">
+        <i data-lucide="github" class="w-4 h-4"></i> GitHub Repository
+      </a>
+    </div>
+    <div class="text-slate-600 text-xs mt-10">
+      © Muhammad Muneeb. Lifetime Free Deployment via GitHub Pages.
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    // Mobile menu toggle script
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking links
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Track useful portfolio interactions in GA4 (only after a valid Measurement ID is added).
+    document.querySelectorAll('a[href]').forEach(link => {
+      link.addEventListener('click', () => {
+        const href = link.getAttribute('href') || '';
+        if (typeof gtag === 'function' && href && !href.startsWith('#') && href !== 'javascript:void(0)') {
+          gtag('event', 'portfolio_link_click', {
+            link_text: (link.textContent || '').trim().slice(0, 100),
+            link_url: href.slice(0, 500)
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
